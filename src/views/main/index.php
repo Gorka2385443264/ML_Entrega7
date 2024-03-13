@@ -1,6 +1,6 @@
 <?php
 
-$env = parse_ini_file(__DIR__ . '/../../../.env_toCopy');
+$env = parse_ini_file(__DIR__ . '/../../../.env');
 
 $APP_DIR = $env["APP_DIR"];
 
@@ -8,7 +8,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . $APP_DIR . '/src/views/parts/layouts/la
 
 require_once(APP_DIR . '/src/views/parts/sidebar.php');
 
-require_once(APP_DIR  . '/src/views/parts/header.php');
+require_once(APP_DIR . '/src/views/parts/header.php');
 
 //DBra joan
 require_once(APP_DIR . '/src/php/connect.php');
@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
     $izena = $row["izena"]; //Hau DBko $row-etik atera behar da
     $bideo_esteka = $row["bideo_esteka"]; //Hau DBko $row-etik atera behar da
     $web_esteka = $row["web_esteka"]; //Hau DBko $row-etik atera behar da
-?>
+    ?>
     <div class="middle_text">
         <h1 style="color: #024e93;"><span id="laburbiLdura_base_datos">
                 <?= $laburbildura ?>
@@ -41,7 +41,9 @@ if ($result->num_rows > 0) {
         </h1>
         <br>
         <div>
-            <iframe width="560" height="315" src="<?= $bideo_esteka ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="<?= $bideo_esteka ?>" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
         </div>
         <div>
             <span class="goierri_link">
@@ -52,7 +54,7 @@ if ($result->num_rows > 0) {
         </div>
         <?php
         if ($scanned) {
-        ?>
+            ?>
             <div class="middle_items form_div">
                 <div id="errorMessage">
                     <ul>
@@ -73,7 +75,9 @@ if ($result->num_rows > 0) {
                 <input type="hidden" id="courseId" value="<?= $kurtsoa ?>" />
                 <div class="form">
                     <label for="email">Email:<span class="asterisco">*</span></label>
-                    <input type="email" name="email" id="email" placeholder="xxx_xxx_xxx@goierrieskola.org" pattern="([a-zA-Z]{3}_[a-zA-Z]{3}_[a-zA-Z]{3}|[a-z]{8,})@(goierrieskola\.org|goierrieskola\.eus)$" required>
+                    <input type="email" name="email" id="email" placeholder="xxx_xxx_xxx@goierrieskola.org"
+                        pattern="([a-zA-Z]{3}_[a-zA-Z]{3}_[a-zA-Z]{3}|[a-z]{8,})@(goierrieskola\.org|goierrieskola\.eus)$"
+                        required>
                     <br>
                     <label for="balorazioa">Balorazioa<span class="asterisco" id="balorazioa">*</span>:
                         <i id="info-icon" class="fa fa-info-circle"></i>
@@ -90,7 +94,7 @@ if ($result->num_rows > 0) {
                     </label>
 
                     <?php
-                    require_once(APP_DIR  . '/src/views/main/index/modal.php');
+                    require_once(APP_DIR . '/src/views/main/index/modal.php');
                     ?>
 
                     <br>
@@ -99,15 +103,15 @@ if ($result->num_rows > 0) {
                     </div>
                 </div>
             </div>
-        <?php
+            <?php
         } else {
-        ?>
+            ?>
             <div class="mainMessage qr_explanation">
                 <p>
                     Galdera erantzuteko QR-a irakurri behar duzu mugikorrarekin. Animatu eta parte hartu!
                 </p>
             </div>
-        <?php
+            <?php
         }
         ?>
 
@@ -115,7 +119,7 @@ if ($result->num_rows > 0) {
 
     </div>
 
-<?php
+    <?php
 }
-require_once(APP_DIR  . '/src//views/parts/layouts/layoutBottom.php');
+require_once(APP_DIR . '/src//views/parts/layouts/layoutBottom.php');
 ?>
