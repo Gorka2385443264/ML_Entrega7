@@ -10,7 +10,7 @@ require_once(APP_DIR . '/src/views/parts/sidebar.php');
 
 require_once(APP_DIR . '/src/views/parts/header.php');
 
-//DBra joan
+//DBra joanjjioewfjoiewfjoiejo
 require_once(APP_DIR . '/src/php/connect.php');
 
 //scanned aldagaia badator estekan formularioa erakutsiko du
