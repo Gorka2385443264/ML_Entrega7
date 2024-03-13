@@ -12,14 +12,17 @@ $config = simplexml_load_file(APP_DIR . '/config.xml');
 
 // Verificar si se ha enviado el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'changeConfig') {
+    // Obtener el valor hexadecimal del color principal y del pie de página
+    $mainColor = isset($_POST['mainColor']) ? $_POST['mainColor'] : '';
+    $footerColor = isset($_POST['footerColor']) ? $_POST['footerColor'] : '';
+
     // Actualizar los valores del XML con los valores del formulario
-    $config->mainColor = $_POST['mainColor'];
-    $config->footerColor = $_POST['footerColor'];
+    $config->mainColor = $mainColor;
+    $config->footerColor = $footerColor;
 
     // Guardar los cambios en el archivo XML
     $config->asXML(APP_DIR . '/config.xml');
 }
-
 ?>
 <div class="laburpenaDiv">
     <form action="<?= HREF_APP_DIR ?>/src/php/post.php" method="post">
