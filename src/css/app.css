@@ -1,3 +1,4 @@
+
 body {
   font-family: system-ui, sans-serif;
   margin: auto;
@@ -13,6 +14,11 @@ body {
   padding: 0;
 }
 
+.mainImage {
+  height: 315px;
+  max-width: 560px;
+}
+
 @media (max-width: 767px) {
   /* ajuste para móviles */
   body {
@@ -24,6 +30,11 @@ body {
   }
   .header-elem-right {
     padding-right: 25px;
+  }
+
+  .mainImage {
+    height: auto;
+    max-width: 375px;
   }
 }
 
@@ -76,7 +87,7 @@ div:has(> .goierri_link) {
 
 button.rightSidebar {
   background-color: white;
-  color: #024e93;
+  color: var(--mainColor);
   padding: 15px;
   font-size: 25px;
   border: none;
@@ -86,7 +97,7 @@ button.rightSidebar {
 
 div.rightSidebar {
   background-color: white;
-  color: #024e93;
+  color: var(--mainColor);
   font-size: 25px;
   border: none;
   cursor: pointer;
@@ -105,7 +116,7 @@ div.flex-center {
     padding: 5px;
   }
   .form_div {
-    width: 90%;
+    width: 70%;
     margin: 50px auto auto auto;
   }
 
@@ -186,7 +197,7 @@ input {
   top: 50%; /* Cambiado a 50% para centrar verticalmente */
   left: 50%; /* Cambiado a 50% para centrar horizontalmente */
   transform: translate(-50%, -50%); /* Ajustado para centrar correctamente */
-  background-color: #024e93;
+  background-color: var(--mainColor);
   z-index: 2;
   height: 500px;
 }
@@ -195,7 +206,7 @@ input {
   border: white;
 }
 .modal-content .titulo button {
-  background-color: #024e93;
+  background-color: var(--mainColor);
   color: white;
   border: 1px solid white;
 }
@@ -213,7 +224,7 @@ input {
   justify-content: space-between;
   padding-top: 3%;
   padding-bottom: 3%;
-  background-color: #024e93;
+  background-color: var(--mainColor);
   color: white;
 }
 
@@ -286,7 +297,7 @@ button {
 }
 
 button[type="submit"] {
-  background-color: #024e93;
+  background-color: var(--mainColor);
   color: white;
   padding: 10px;
   border: none;
@@ -302,7 +313,7 @@ button[type="submit"] {
   font-weight: bold;
 }
 .offcanvas {
-  background-color: #024e93;
+  background-color: var(--mainColor);
   color: white;
 }
 .offcanvas a {
@@ -317,7 +328,7 @@ button[type="submit"] {
 }
 
 footer {
-  background-color: #333;
+  background-color: var(--footerColor);
   color: #fff;
   padding: 20px;
   text-align: center;
@@ -370,8 +381,8 @@ nav a {
   background-color: #f45703;
 }
 .qr_explanation {
-  color: #024e93;
-  border: 1px solid #024e93;
+  color: var(--mainColor);
+  border: 1px solid var(--mainColor);
   margin-top: 40px;
 }
 
@@ -397,7 +408,7 @@ nav a {
 }
 
 .modal-question.submitButton > button {
-  color: #024e93;
+  color: var(--mainColor);
 }
 
 .modal-question.submitButton > button,
@@ -409,8 +420,25 @@ nav a {
   text-align: center;
 }
 
-.laburpenaDiv table, .laburpenaDiv table th, .laburpenaDiv table td {
+.laburpenaDiv table,
+.laburpenaDiv table th,
+.laburpenaDiv table td {
   margin: auto;
   border: solid black 1px;
   padding: 5px;
+}
+
+.middle_text > h1, .middle_text > h2 {
+  color: var(--mainColor);
+} 
+
+.laburpenaDiv > form > div {
+  width: 20%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.laburpenaDiv > form > div label {
+  font-weight: bold;
 }

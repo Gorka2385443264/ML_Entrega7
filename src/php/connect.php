@@ -164,10 +164,10 @@ function checkIfAnswerIsCorrect($answeredOption, $courseId){
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        return $answeredOption == $row["erantzun_zuzena"];
+        return $answeredOption == $row["erantzun_zuzena"] ? 1 : 0;
     }
 
-    return false;
+    return 0;
 
 }
 function saveAnswerInDb($courseId, $userId, $valoration, $answerIsCorrect, $valid, $teacher){

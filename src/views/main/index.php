@@ -33,8 +33,41 @@ if ($result->num_rows > 0) {
     $bideo_esteka = $row["bideo_esteka"]; //Hau DBko $row-etik atera behar da
     $web_esteka = $row["web_esteka"]; //Hau DBko $row-etik atera behar da
     ?>
+
+    <?php
+    // Ruta al archivo XML de configuración
+    $configFilePath = $_SERVER["DOCUMENT_ROOT"] . $APP_DIR . '/src/config.xml';
+
+    // Cargar el archivo XML
+    $config = simplexml_load_file($configFilePath);
+
+    // Procesar cambios en el CSS
+    foreach ($config->change as $change) {
+        $id = (string) $change['id'];
+        $value = (string) $change['value'];
+
+        // Aplicar los cambios al CSS
+        if ($id === 'footer_XML') {
+            echo "<style>#{$id} { background-color: {$value} }</style>";
+        } elseif ($id === 'texto_XML') {
+            echo "<style>#{$id} { color: {$value} }</style>";
+        }
+    }
+
+
+    ?>
+
+
+
+
+
+
+
+
+
+
     <div class="middle_text">
-        <h1 style="color: #024e93;"><span id="laburbiLdura_base_datos">
+        <h1 id="texto_XML"><span id="laburbiLdura_base_datos">
                 <?= $laburbildura ?>
             </span> -
             <?= $izena ?>

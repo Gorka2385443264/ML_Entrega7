@@ -1,7 +1,7 @@
 <!-- External -->
 
 <!-- Bootstrap -->
-<script type="text/javascript" src="<?= HREF_APP_DIR ?>/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 
 <!-- Jquery -->
 <script src="<?= HREF_APP_DIR ?>/public/jquery_3_7_1.js"></script>

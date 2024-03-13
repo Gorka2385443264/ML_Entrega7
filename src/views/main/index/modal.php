@@ -5,7 +5,7 @@
             <button class="info-icon-close">X</button>
         </header>
         <header class="titulo modal-question hidden">
-            <h2><?= $laburbildura ?> - GALDERA</h2>
+            <h2><?= $izena ?> - GALDERA</h2>
         </header>
     </div>
     <div class="text">

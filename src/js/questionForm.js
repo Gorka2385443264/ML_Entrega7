@@ -24,13 +24,13 @@ function saveAnswer() {
                 $(".form").addClass("hidden");
                 $(".correctlySaved").removeClass("hidden");
             } else if (dataObject.code > 400) {
-                alert("Barkatu eragozpenak, errore bat gertatu da. Saiatu beranduago berriz, mesedez.");
+                alert("Barkatu eragozpenak, errore bat gertatu da. Birkargatu orria eta saiatu berriz, mesedez.");
             }
 
 
         })
         .fail(function () {
-            alert("Barkatu eragozpenak, errore bat gertatu da. Saiatu beranduago berriz, mesedez.");
+            alert("Barkatu eragozpenak, errore bat gertatu da. Birkargatu orria eta saiatu berriz, mesedez.");
         })
         .always(function () { });
 

@@ -39,7 +39,7 @@ function sendForm(valoration, emailValue, course) {
 
         })
         .fail(function () {
-            alert("Barkatu eragozpenak, errore bat gertatu da.");
+            alert("Barkatu eragozpenak, errore bat gertatu da. Birkargatu orria eta saiatu berriz, mesedez.");
         })
         .always(function () { });
 

@@ -1,6 +1,6 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel">Proiektu zerrenda</h5>
+    <h5 id="offcanvasRightLabel">Guneen zerrenda</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
@@ -14,9 +14,11 @@
   $result = getZikloak();
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-      echo '<div class="course tu-clase-div" data-id="' . $row["id"] . '">';
-      echo '<a href=".?kurtsoa='.$row["id"].'">' . $row["laburbildura"] . " - " . $row["izena"] . '</a>';
-      echo '</div>';
+      if($row["active"] == 1){
+        echo '<div class="course tu-clase-div" data-id="' . $row["id"] . '">';
+        echo '<a href=".?kurtsoa='.$row["id"].'">' . $row["izena"] . " (" . $row["laburbildura"] . ')</a>';
+        echo '</div>';
+      }
     }
   } else {
     echo 'No se encontraron elementos en la base de datos.';

@@ -61,7 +61,7 @@ require_once(APP_DIR . '/src/views/parts/header.php');
 
         echo "<tr>";
         echo "<td>";
-        echo $allCoursesRow["laburbildura"];
+        echo $allCoursesRow["izena"];
         echo "</td>";
         echo "<td>";
         echo isset($allAnswersArray[$i]) ? $allAnswersArray[$i] : "0";
