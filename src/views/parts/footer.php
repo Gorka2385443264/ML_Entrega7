@@ -4,13 +4,15 @@ $APP_DIR = $env["APP_DIR"];
 
 require_once($_SERVER["DOCUMENT_ROOT"] . $APP_DIR . '/src/views/parts/layouts/layoutTop.php');
 
-require_once(APP_DIR . '/src/views/parts/sidebar.php');
-require_once(APP_DIR . '/src/views/parts/header.php');
+require_once(__DIR__ . '/sidebar.php');
+require_once(__DIR__ . '/header.php');
 
 // Cargar la configuración actual desde el archivo XML
-$config = simplexml_load_file(APP_DIR . '/config.xml');
+$config = simplexml_load_file($_SERVER["DOCUMENT_ROOT"] . $APP_DIR . '/config.xml');
 
+$kurtsoa = ""; // Puedes asignarle un valor adecuado si es necesario
 $result = getZikloa($kurtsoa);
+
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
@@ -73,5 +75,6 @@ if ($result->num_rows > 0) {
     </html>
     <?php
 }
-require_once(APP_DIR . '/src/views/parts/layouts/layoutBottom.php');
+require_once($APP_DIR . '/src/views/parts/layouts/layoutBottom.php');
+
 ?>

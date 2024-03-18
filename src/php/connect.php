@@ -65,9 +65,10 @@ function getZikloa($id)
         die("Conexión fallida: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM " . $dbName . ".zikloak WHERE id=".$id." ORDER BY laburbildura ASC";
-
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * FROM " . $dbName . ".zikloak WHERE id=? ORDER BY laburbildura ASC");
+    $stmt->bind_param("i", $id); // "i" indica que el parámetro es un entero
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     return $result;
 }
