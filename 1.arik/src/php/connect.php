@@ -42,7 +42,7 @@ function getZikloak()
     $conn = new mysqli($servername, $username, $password, $dbName);
 
     if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
+        die ("Conexión fallida: " . $conn->connect_error);
     }
 
     $sql = "SELECT * FROM " . $dbName . ".zikloak ORDER BY laburbildura ASC";
@@ -62,7 +62,7 @@ function getZikloa($id)
     $conn = new mysqli($servername, $username, $password, $dbName);
 
     if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
+        die ("Conexión fallida: " . $conn->connect_error);
     }
 
     $sql = "SELECT * FROM " . $dbName . ".zikloak WHERE id=" . $id . " ORDER BY laburbildura ASC";
@@ -85,7 +85,7 @@ function getUserIdByEmail($email)
     $conn = new mysqli($servername, $username, $password, $dbName);
 
     if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
+        die ("Conexión fallida: " . $conn->connect_error);
     }
 
     $uname = getUsernameFromEmail($email);
@@ -125,7 +125,7 @@ function checkIfAlreadyHasAnsweredCourse($courseId, $userId)
     $conn = new mysqli($servername, $username, $password, $dbName);
 
     if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
+        die ("Conexión fallida: " . $conn->connect_error);
     }
 
     $sql = "SELECT id FROM " . $dbName . ".balorazioa WHERE ziklo_id='" . $courseId . "' AND erabiltzaile_id='" . $userId . "';";
@@ -156,7 +156,7 @@ function checkIfAnswerIsCorrect($answeredOption, $courseId)
     $conn = new mysqli($servername, $username, $password, $dbName);
 
     if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
+        die ("Conexión fallida: " . $conn->connect_error);
     }
 
     $sql = "SELECT erantzun_zuzena FROM " . $dbName . ".zikloak WHERE id='" . $courseId . "';";
@@ -186,7 +186,7 @@ function saveAnswerInDb($courseId, $userId, $valoration, $answerIsCorrect, $vali
     $conn = new mysqli($servername, $username, $password, $dbName);
 
     if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
+        die ("Conexión fallida: " . $conn->connect_error);
     }
 
     $sql = "INSERT INTO balorazioa (id, ziklo_id, erabiltzaile_id, balorazioa, zuzen_erantzun, valid, teacher) VALUES (NULL, '" . $courseId . "','" . $userId . "','" . $valoration . "','" . $answerIsCorrect . "','" . $valid . "','" . $teacher . "')";
@@ -212,7 +212,7 @@ function insertUserInDb($email)
     $conn = new mysqli($servername, $username, $password, $dbName);
 
     if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
+        die ("Conexión fallida: " . $conn->connect_error);
     }
 
     $uname = getUsernameFromEmail($email);
