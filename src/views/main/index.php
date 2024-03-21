@@ -20,6 +20,9 @@ $kurtsoa = isset ($_GET["kurtsoa"]) ? $_GET["kurtsoa"] : 1;
 
 $result = getZikloa($kurtsoa);
 
+$config = simplexml_load_file(APP_DIR . '/config.xml');
+$mainColor = $config->mainColor;
+
 if ($result->num_rows > 0) {
 
     $row = $result->fetch_assoc();
