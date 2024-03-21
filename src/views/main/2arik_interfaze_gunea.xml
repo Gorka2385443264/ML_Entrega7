@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<opiniones>
+    <opinion>
+        <nombre>Nombre del Usuario</nombre>
+        <correo>correo@example.com</correo>
+        <mensaje>Contenido del comentario.</mensaje>
+        <pagina>URL de la página</pagina>
+        <fecha>Fecha y hora del comentario</fecha>
+    </opinion>
+</opiniones>

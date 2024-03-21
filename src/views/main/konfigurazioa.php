@@ -22,6 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset ($_POST['action']) && $_POST[
 
     // Guardar los cambios en el archivo XML
     $config->asXML(APP_DIR . '/config.xml');
+
+    // Redireccionar para reflejar los cambios
+    header("Location: index.php");
+    exit();
 }
 
 // Generar CSS dinámico
@@ -36,7 +40,8 @@ $dynamicCSS = "<style>
 ?>
 
 <div class="laburpenaDiv">
-    <form action="<?= HREF_APP_DIR ?>/src/php/post.php" method="post">
+    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+        <!-- Cambiado el action para que envíe el formulario a sí mismo -->
         <input type="hidden" value="changeConfig" name="action" />
         <div>
             <div>

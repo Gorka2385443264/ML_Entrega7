@@ -7,8 +7,10 @@ require_once ($_SERVER["DOCUMENT_ROOT"] . $APP_DIR . '/src/views/parts/layouts/l
 require_once (APP_DIR . '/src/views/parts/sidebar.php');
 require_once (APP_DIR . '/src/views/parts/header.php');
 
-// Cargar la configuración actual desde el archivo XML
+
 $config = simplexml_load_file(APP_DIR . '/config.xml');
+$footerColor = $config->footerColor;
+// Cargar la configuración actual desde el archivo XML
 
 $result = getZikloa($kurtsoa);
 
@@ -33,13 +35,7 @@ if ($result->num_rows > 0) {
         <style>
             #mainColor {
                 color:
-                    <?= $config->mainColor ?>
-                ;
-            }
-
-            #footerColor {
-                background-color:
-                    <?= $config->footerColor ?>
+                    <?= $mainColor ?>
                 ;
             }
         </style>
@@ -50,7 +46,7 @@ if ($result->num_rows > 0) {
 
         </div>
 
-        <footer id="footerColor">
+        <footer style="background-color: <?= $footerColor ?>">
             <div>
                 <p><a href="<?= HREF_VIEWS_DIR ?>/main/taldeArgazkia.php" target="_blank">Egileak: 1WG3 eta 1MG3 taldeko
                         ikasleak</a></p>
