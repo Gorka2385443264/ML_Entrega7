@@ -48,4 +48,6 @@ $dynamicCSS = "<style>
 </div>
 
 
-<?= $dynamicCSS ?>
+<?php
+require_once (APP_DIR . '/src/views/parts/layouts/layoutBottom.php');
+?>

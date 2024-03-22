@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <opiniones>
     <opinion>
-        <nombre>Gorka Bartolome</nombre>
-        <correo>gorka@gmail.com</correo>
+        <nombre>gorka</nombre>
+        <correo>gor_bar_are@goierrieskola.org</correo>
         <mensaje>Komentarioakk.</mensaje>
-        <pagina>https://www.goierrieskola.eus/</pagina>
         <fecha>2024/03/21</fecha>
     </opinion>
-</opiniones>
+<opinion><nombre>a</nombre><correo>gor_bar_are@goierrieskola.org</correo><mensaje>a</mensaje><fecha>2024/03/22</fecha></opinion></opiniones>
