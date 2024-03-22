@@ -7,10 +7,47 @@ $APP_DIR = $env["APP_DIR"];
 define('APP_DIR', $_SERVER['DOCUMENT_ROOT'] . $APP_DIR); //Aplikazioaren karpeta edozein lekutatik atzitzeko.
 define('HREF_APP_DIR', $APP_DIR); //Aplikazioaren views karpeta edozein lekutatik deitzeko
 
-require_once(APP_DIR . '/src/views/parts/logs.php');
+require_once (APP_DIR . '/src/views/parts/logs.php');
 
-require_once(APP_DIR . '/src/php/connect.php');
+require_once (APP_DIR . '/src/php/connect.php');
 
+// Función para verificar si el usuario ya ha respondido el curso
+function checkIfAlreadyHasAnswered($courseId, $email)
+{
+    // Get user ID by email
+    $userId = getUserIdByEmail($email);
+
+    // Si la solicitud es POST y la acción es 'changeConfig', entonces actualiza la configuración
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset ($_POST['action']) && $_POST['action'] === 'changeConfig') {
+        // Obtener el valor hexadecimal del color principal y del pie de página
+        $mainColor = isset ($_POST['mainColor']) ? $_POST['mainColor'] : '';
+        $footerColor = isset ($_POST['footerColor']) ? $_POST['footerColor'] : '';
+
+        // Cargar la configuración desde el archivo XML
+        $config = simplexml_load_file(APP_DIR . '/config.xml');
+
+        // Actualizar los valores del XML con los valores del formulario
+        $config->mainColor = $mainColor;
+        $config->footerColor = $footerColor;
+
+        // Guardar los cambios en el archivo XML
+        $config->asXML(APP_DIR . '/config.xml');
+
+        // Redireccionar para reflejar los cambios
+        header("Location: ../views/main/index.php");
+        exit();
+    }
+
+    // Si no se encuentra el ID de usuario, entonces el usuario no ha respondido
+    if ($userId === null) {
+        return false;
+    }
+
+    // Verificar si el usuario ya ha respondido el curso
+    return checkIfAlreadyHasAnsweredCourse($courseId, $userId);
+}
+
+// Manejar las solicitudes POST
 if (count($_POST) > 0) {
     switch ($_POST["action"]) {
         case "checkInput": {
@@ -178,30 +215,31 @@ function correctEmail($email)
     }
 }
 
-function checkIfAlreadyHasAnswered($courseId, $email)
+function changeConfig($postData)
 {
+    // Obtener el valor hexadecimal del color principal y del pie de página
+    $mainColor = isset ($postData['mainColor']) ? $postData['mainColor'] : '';
+    $footerColor = isset ($postData['footerColor']) ? $postData['footerColor'] : '';
 
-    //Begiratu behar du lehenengo erabiltzaileak taulan badagoen
-    $userId = getUserIdByEmail($email);
+    try {
+        // Cargar la configuración desde el archivo XML
+        $config = simplexml_load_file(APP_DIR . '/config.xml');
 
-    if (is_null($userId)) {
-        return false;
+        // Actualizar los valores del XML con los valores del formulario
+        $config->mainColor = $mainColor;
+        $config->footerColor = $footerColor;
+
+        // Guardar los cambios en el archivo XML
+        $config->asXML(APP_DIR . '/config.xml');
+
+        // Redireccionar para reflejar los cambios
+        header("Location: ../views/main/index.php");
+        exit();
+    } catch (Exception $e) {
+        // Manejar cualquier error que ocurra durante el proceso
+        // Por ejemplo, podrías registrar el error en un archivo de registro
+        writeLog("Error al cambiar la configuración: " . $e->getMessage());
+        // Devolver una respuesta de error en formato JSON
+        return json_encode(["code" => "500", "message" => "Error al cambiar la configuración"]);
     }
-
-    //ondoren id horrekin ea balorazioak taulan badagoen
-
-    return checkIfAlreadyHasAnsweredCourse($courseId, $userId);
-}
-
-function changeConfig($inputValue)
-{
-    //XML konfigurazioa
-    $config = simplexml_load_file(APP_DIR . '/config.xml');
-
-    //TODO: GARATZEKO
-
-    //Orri nagusira redirekzioa egiteko
-    $location = HREF_APP_DIR . "/src/views/main/index.php";
-
-    header('Location: ' . $location);
 }
