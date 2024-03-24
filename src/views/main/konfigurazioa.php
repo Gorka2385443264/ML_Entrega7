@@ -3,6 +3,7 @@ $env = parse_ini_file(__DIR__ . '/../../../.env');
 $APP_DIR = $env["APP_DIR"];
 
 require_once ($_SERVER["DOCUMENT_ROOT"] . $APP_DIR . '/src/views/parts/layouts/layoutTop.php');
+$kurtsoa = isset ($_GET["kurtsoa"]) ? $_GET["kurtsoa"] : 1;
 
 require_once (APP_DIR . '/src/views/parts/sidebar.php');
 require_once (APP_DIR . '/src/views/parts/header.php');
