@@ -13,7 +13,7 @@ $config = simplexml_load_file(APP_DIR . '/config.xml');
 
 
 
-// Generar CSS dinámico
+// Generar CSS dinámico -- Ander: hau soberan dago. Non erabiltzen da?
 $dynamicCSS = "<style>
     .main-content {
         background-color: $config->mainColor;

@@ -236,6 +236,8 @@ function changeConfig($postData)
         header("Location: ../views/main/index.php");
         exit();
     } catch (Exception $e) {
+        //Ander: Hau non erabiltzen duzue? Zertarako gehitu duzue?
+
         // Manejar cualquier error que ocurra durante el proceso
         // Por ejemplo, podrías registrar el error en un archivo de registro
         writeLog("Error al cambiar la configuración: " . $e->getMessage());
