@@ -16,6 +16,9 @@ $config = simplexml_load_file(APP_DIR . '/config.xml');
 $mainColor = $config->mainColor;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //Ander: Logika guztia hemen sartu duzuenez, orria birkargatutakoan formularioa birbidali nahi duzun adierazten du.
+    //Modu honetan 
+
     $nombre = $_POST["nombre"];
     $correo = $_POST["correo"];
     $mensaje = $_POST["mensaje"];
@@ -24,6 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Cargar el XML existente
     $xml = simplexml_load_file("2arik_interfaze_gunea.xml");
+
+    //Ander: Gordetzerakoan zein guneetakoa den gordetzea falta da atributu bezala.
 
     // Agregar una nueva opinión
     $nueva_opinion = $xml->addChild('opinion');
@@ -100,12 +105,22 @@ if ($result->num_rows > 0) {
 
 // Mostrar el contenido del XML
 $xml = simplexml_load_file("2arik_interfaze_gunea.xml");
+
+
+
+    //Ander: Atributu bezala gordetzen bada zein gunetakoa den
 ?>
 
 
 <div class="middle_text">
     <?php
     foreach ($xml->opinion as $opinion) {
+        //Ander: Hemen IF batekin,
+        /*
+         if (gune honetako iruzkina da) {
+            Erakutsi egingo du iruzkina
+        }
+        */
         echo "<div style='background-color: #f0f0f0;   margin-bottom: 10px;'>";
         echo "<p><strong>Nombre:</strong> " . $opinion->nombre . "<br></p>";
         echo "<p><strong>Correo:</strong> " . $opinion->correo . "<br></p>";
